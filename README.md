@@ -10,12 +10,21 @@ I vari moduli risiederanno su file differenti, saranno eseguibili indipendenti c
 Inoltre potranno godere di _vita propria_, ossia funzionare indipendentemente dagli altri, compreso dal _modulo coordinatore_.
 Vi sarà una libreria comune.
 
-## Protocollo di comunicazione _intermodulare_ (figo, mi sa di interstellare) socket TCP/IP
+## Protocollo di comunicazione _intermodulare_ socket TCP/IP
 I vari moduli risiederanno sullo stesso device (raspberry pi). La comunicazione avverrà quindi con indirizzo IP localhost e i vari moduli avranno una loro porta dedicata.
 Il modulo _coordinatore_ agirà da _client_, mentre i _moduli utenza_ saranno dei _server_.
 I comandi ed i feedback verranno inviati attraverso lo scambio di una variabile di tipo intero.
 
-### Richiesta di vita (che figo..)
+### Richiesta di vita
 Codice di richiesta: 990 (sei vivo?)
 Codice di risposta dal modulo: 999 (si, sono vivo)
 
+### Invio dati da _coordinatore_ a _modulo_
+Codice di invio: 100 + dati
+Codice di risposta dal modulo: 199 (dati ricevuti)
+
+### Lettura dati da _coordinatore_ a _modulo_
+Codice di invio: 200
+Codice di risposta dal modulo: 299 + dati.
+
+_N.B.: il dettaglio dello scambio dati verrà definito per ciasun modulo. Ciò che si può definire a questo punto dello sviluppo è che ogni comunicazione dovrà iniziare con una "richiesta di vita", dopodichè si avrà l'invio dei codici di richiesta successivi._
