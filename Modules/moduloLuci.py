@@ -380,13 +380,13 @@ except:
 ########################################
 #### INIZIALIZZAZIONE SERVER SOCKET ####
 ########################################
-try:
-    print 'INIZIALIZZAZIONE SERVER SOCKET'
-    server = socketServer()
-    server.inizializzazione('',1001)
-    server.start_ascolto()
-except:
-    print 'ERRORE NELLA INIZIALIZZAZIONE DEL SERVER SOCKET'
+#try:
+print 'INIZIALIZZAZIONE SERVER SOCKET'
+server = socketServer()
+server.inizializzazione(('127.0.0.1',1001))
+server.start_ascolto()
+#except:
+#print 'ERRORE NELLA INIZIALIZZAZIONE DEL SERVER SOCKET'
 #############################################
 #### MAIN ROUTINE: ESEGUITA ALL'INFINITO ####
 #############################################
